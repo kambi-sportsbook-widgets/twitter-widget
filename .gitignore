@@ -3,4 +3,5 @@
 node_modules
 docs
 .sass-cache
-.awspublish-kambi-widgets
+.awspublish-*
+.buildTemp

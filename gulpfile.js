@@ -55,27 +55,7 @@
 
       return gulp.src(['./dist/**/*'])
          .pipe(rename(function ( path ) {
-            path.dirname = '/livenow/' + path.dirname;
-         }))
-         .pipe(publisher.publish(headers, {
-            //force: true
-         }))
-         .pipe(publisher.cache())
-         .pipe(awspublish.reporter());
-   });
-
-   gulp.task('publish-docs', function () {
-      var publisher = awspublish.create({
-         params: {
-            Bucket: 'kambi-widgets'
-         }
-      });
-
-      var headers = {};
-
-      return gulp.src(['docs/**/*'])
-         .pipe(rename(function ( path ) {
-            path.dirname = '/livenow/docs/' + path.dirname;
+            path.dirname = '/twitter/' + path.dirname;
          }))
          .pipe(publisher.publish(headers, {
             //force: true
