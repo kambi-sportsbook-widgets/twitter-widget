@@ -2,7 +2,7 @@
 
    'use strict';
 
-   function appController( $scope, $widgetService, $apiService, $controller, $timeout ) {
+   function appController( $scope, $controller, $timeout ) {
 
       // Extend the core controller that takes care of basic setup and common functions
       angular.extend(appController, $controller('widgetCoreController', {
@@ -10,6 +10,10 @@
       }));
 
       $scope.defaultHeight = 450;
+
+      var supported_twitter_langs = ['hi', 'zh-cn', 'fr', 'zh-tw',
+         'msa', 'fil', 'fi', 'sv', 'pl', 'ja', 'ko', 'de',
+         'it', 'pt', 'es', 'ru', 'id', 'tr', 'da', 'no', 'nl', 'hu', 'fa', 'ar', 'ur', 'he', 'th'];
 
       /**
        * setTimeline
@@ -20,14 +24,21 @@
          $timeout(function () {
             $scope.$apply();
 
-            if ( twttr ) {
+            if ( twttr && $scope.args.twitter && $scope.args.twitter.type ) {
                var twitterParams = {
                   width: '100%',
                   height: $scope.currentHeight - 50,
                   chrome: 'noheader noborders transparent'
                };
+
                twitterParams = angular.merge(twitterParams, $scope.args.twitter);
                twitterParams[$scope.args.twitter.type] = $scope.args.twitter.value ? encodeURIComponent($scope.args.twitter.value) : '';
+
+               if ( $scope.args.twitter.lang && supported_twitter_langs.indexOf($scope.args.twitter.lang) !== -1 ) {
+                  twitterParams.lang = $scope.args.twitter.lang;
+               } else {
+                  twitterParams.lang = 'en';
+               }
 
                twttr.widgets.createTimeline(
                   twitterParams.widget_id,
@@ -62,7 +73,7 @@
    }
 
    (function ( $app ) {
-      return $app.controller('appController', ['$scope', 'kambiWidgetService', 'kambiAPIService', '$controller', '$timeout', appController]);
+      return $app.controller('appController', ['$scope', '$controller', '$timeout', appController]);
    })(angular.module('twitterWidget'));
 
 }).call(this);
