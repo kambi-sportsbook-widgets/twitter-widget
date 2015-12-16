@@ -27,6 +27,8 @@
 
       $scope.defaultHeight = 450;
 
+      $scope.widgetTitle = '';
+
       var supported_twitter_langs = ['hi', 'zh-cn', 'fr', 'zh-tw',
          'msa', 'fil', 'fi', 'sv', 'pl', 'ja', 'ko', 'de',
          'it', 'pt', 'es', 'ru', 'id', 'tr', 'da', 'no', 'nl', 'hu', 'fa', 'ar', 'ur', 'he', 'th'];
@@ -56,6 +58,14 @@
                   twitterParams.lang = 'en';
                }
 
+               if ( $scope.args.twitter.type.match('screen') ) {
+                  $scope.widgetTitle = 'Tweets by @' + $scope.args.twitter.value;
+               } else if ( $scope.args.twitter.type.match('userid') ) {
+                  $scope.widgetTitle = 'Tweets by user ' + $scope.args.twitter.value;
+               } else {
+                  $scope.widgetTitle = 'Tweets about "' + $scope.args.twitter.value + '"';
+               }
+
                twttr.widgets.createTimeline(
                   twitterParams.widget_id,
                   document.getElementById('timeline_twitter'),
@@ -72,16 +82,19 @@
       // so we can call our methods that require parameters from the widget settings after the init method is called
       $scope.init().then(function () {
 
-         /**
-          * Default twitter object configuration.
-          * Possible values for @type : related | screenName | userId | favoritesScreenName | favoritesUserId
-          * @type {{value: string, widget_id: string, type: string}}
-          */
-         $scope.args.twitter = {
-            value: '#manchester united',
-            widget_id: '676378780357763072',
-            type: 'related'
-         };
+         if ( !$scope.args.twitter ) {
+
+            /**
+             * Default twitter object configuration.
+             * Possible values for @type : related | screenName | userId | favoritesScreenName | favoritesUserId
+             * @type {{value: string, widget_id: string, type: string}}
+             */
+            $scope.args.twitter = {
+               value: '#manchester united',
+               widget_id: '676378780357763072',
+               type: 'related'
+            };
+         }
 
          setTimeline();
       });

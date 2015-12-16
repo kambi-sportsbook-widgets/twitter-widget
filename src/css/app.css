@@ -650,4 +650,12 @@ a {
   background-color: #f6f6f6;
 }
 
+header img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+
+
 /*# sourceMappingURL=app.css.map */
