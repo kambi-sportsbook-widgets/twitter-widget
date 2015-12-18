@@ -12,10 +12,10 @@ __`client-widgets.js`__
     "order": 1,
     "widgetId": "Twitter Manchester feed",
     "args": {
-        "twitter" : {
-            "value": "#manchester united",
-            "widget_id": "676378780357763072",
-            "type": "related"
+        "twitter": {
+            "value": "premierleague",
+            "widget_id": "677852574847008768",
+            "type": "screen"
         }
     }
 },
@@ -25,11 +25,9 @@ __`client-widgets.js`__
 
 ### The configuration object must contain the key 'twitter', which in turn must hold the following keys, values:
 1. `type` sets the type of timeline:
-    - `related` can be any hashtag or keyword/s, eg: `#manchester`, `manchester united`
+    - `related` can be one or more hashtag(s), eg: `#manchester`, `#manchester #premierleague`
     - `screenName` a certain user name which will display his tweets
-    - `userId` a certain user id which will display his tweets
     - `favoritesScreenName` a certain user name which will display his tweets
-    - `favoritesUserId` a certain user id which will display his tweets
 2. `value` sets the search word or name or user id set in the `type` parameter
 3. `widget_id` is the widget id, which can be found on https://twitter.com/settings/widgets for a registered developer which has created a timeline widget.
 
