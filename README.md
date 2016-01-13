@@ -39,3 +39,7 @@ The widget can take any parameter found in Twitter's Timeline parameters https:/
  - chrome: 'noheader noborders transparent'
 
 For more information on timeline widgets, refer to https://dev.twitter.com/web/embedded-timelines
+
+# Changelog
+
+changelog can be found [here](CHANGELOG.md)

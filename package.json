@@ -4,6 +4,7 @@
    "description": "A twitter widget to display tweets based on configuration",
    "main": "gulpfile.js",
    "scripts": {
+      "changelog" : "changelog kambi-sportsbook-widgets/twitter-widget all -m > CHANGELOG.md",
       "test": "echo \"Error: no test specified\" && exit 1"
    },
    "repository": {
@@ -27,6 +28,7 @@
       "gulp-sourcemaps": "^1.6.0",
       "gulp-strip-debug": "^1.0.2",
       "gulp-uglify": "^1.4.2",
+      "changelog": "latest",
       "kambi-sportsbook-widget-library": "git+ssh://git@github.com/kambi-sportsbook-widgets/widget-library.git#0.9.2"
    },
    "author": "andrei@globalmouth.com",
