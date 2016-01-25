@@ -39,13 +39,14 @@
                   width: '100%',
                   height: $scope.currentHeight - 50,
                   chrome: 'noheader noborders transparent'
-               };
+               }, lang = $scope.locale.substring(0,2);
 
                twitterParams = angular.merge(twitterParams, $scope.args.twitter);
                twitterParams[$scope.args.twitter.type] = $scope.args.twitter.value ? encodeURIComponent($scope.args.twitter.value) : '';
 
-               if ( $scope.args.twitter.lang && supported_twitter_langs.indexOf($scope.args.twitter.lang) !== -1 ) {
-                  twitterParams.lang = $scope.args.twitter.lang;
+               // Match the locale string against supported languages provided by twitter
+               if ( lang && supported_twitter_langs.indexOf(lang) !== -1 ) {
+                  twitterParams.lang = lang;
                } else {
                   twitterParams.lang = 'en';
                }
@@ -72,6 +73,7 @@
       // The init-method returns a promise that resolves when all of the configurations are set, for instance the $scope.args variables
       // so we can call our methods that require parameters from the widget settings after the init method is called
       $scope.init().then(function () {
+         $scope.locale = $scope.getConfigValue('locale');
 
          if ( !$scope.args.twitter ) {
             console.warn('Twitter configuration not set');
