@@ -2,7 +2,7 @@
 
    'use strict';
 
-   function appController( $scope, $controller, $timeout ) {
+   function appController ($scope, $controller, $timeout) {
 
       // Extend the core controller that takes care of basic setup and common functions
       angular.extend(appController, $controller('widgetCoreController', {
@@ -26,7 +26,7 @@
          'it', 'pt', 'es', 'ru', 'id', 'tr', 'da', 'no', 'nl', 'hu', 'fa', 'ar', 'ur', 'he', 'th'];
 
       /**
-       * setTimeline
+       * SetTimeline
        * Parse timeline configuration and init the twitter framework
        */
       var setTimeline = function () {
@@ -34,27 +34,26 @@
          $timeout(function () {
             $scope.$apply();
 
-            if ( twttr && $scope.args.twitter && $scope.args.twitter.type ) {
+            if (twttr && $scope.args.twitter && $scope.args.twitter.type) {
                var twitterParams = {
                   width: '100%',
                   height: $scope.currentHeight - 50,
                   chrome: 'noheader noborders transparent'
-               }, lang = $scope.locale.substring(0,2);
+               }, lang = $scope.locale.substring(0, 2);
 
                twitterParams = angular.merge(twitterParams, $scope.args.twitter);
                twitterParams[$scope.args.twitter.type] = $scope.args.twitter.value ? encodeURIComponent($scope.args.twitter.value) : '';
 
                // Match the locale string against supported languages provided by twitter
-               if ( lang && supported_twitter_langs.indexOf(lang) !== -1 ) {
+               if (lang && supported_twitter_langs.indexOf(lang) !== -1) {
                   twitterParams.lang = lang;
                } else {
                   twitterParams.lang = 'en';
                }
 
-               if ( $scope.args.twitter.type.match('screen') ) {
+               if ($scope.args.twitter.type.match('screen')) {
                   $scope.widgetTitle = '@' + $scope.args.twitter.value;
-               }
-               else {
+               } else {
                   $scope.widgetTitle = $scope.args.twitter.value;
                }
 
@@ -62,7 +61,7 @@
                   twitterParams.widget_id,
                   document.getElementById('timeline_twitter'),
                   twitterParams
-               ).then(function ( el ) {
+               ).then(function (el) {
 
                });
             }
@@ -75,7 +74,7 @@
       $scope.init().then(function () {
          $scope.locale = $scope.getConfigValue('locale');
 
-         if ( !$scope.args.twitter ) {
+         if (!$scope.args.twitter) {
             console.warn('Twitter configuration not set');
          }
 
@@ -84,7 +83,7 @@
 
    }
 
-   (function ( $app ) {
+   (function ($app) {
       return $app.controller('appController', ['$scope', '$controller', '$timeout', appController]);
    })(angular.module('twitterWidget'));
 
