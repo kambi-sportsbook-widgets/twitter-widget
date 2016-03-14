@@ -3,8 +3,7 @@
    var arrDependencies;
 
    arrDependencies = [
-      'widgetCore',
-      'widgetCore.translate'
+      'widgetCore'
    ];
 
    (function ($app) {
@@ -52,7 +51,7 @@
             if (twttr && $scope.args.twitter && $scope.args.twitter.type) {
                var twitterParams = {
                   width: '100%',
-                  height: $scope.currentHeight - 50,
+                  height: $scope.currentHeight - 34,
                   chrome: 'noheader noborders transparent'
                }, lang = $scope.locale.substring(0, 2);
 
