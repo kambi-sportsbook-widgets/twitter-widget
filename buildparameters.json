@@ -1,6 +1,0 @@
-{
-   "htmlReplace": {
-      "corelib": "//kambi-cdn.globalmouth.com/lib/dist/js/app.min.js"
-   },
-   "awsPublishPath": "twitter"
-}

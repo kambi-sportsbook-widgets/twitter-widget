@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEG,UAAI;EACD,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI",
-"sources": ["../scss/widget/_widget-theme.scss"],
-"names": [],
-"file": "app.css"
-}

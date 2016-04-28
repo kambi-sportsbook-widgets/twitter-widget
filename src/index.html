@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="twitterWidget">
+<html>
 <head>
    <title>Twitter widget</title>
    <meta charset="UTF-8">
@@ -16,39 +16,26 @@
    <meta name="apple-mobile-web-app-status-bar-style" content="black">
    <meta name="apple-mobile-web-app-title" content="">
 
-   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500"/>
-   <link rel="stylesheet" type="text/css" href="//kambi-cdn.globalmouth.com/lib/dist/css/app-base-all.css"/>
-   <link rel="stylesheet" type="text/css" href="//kambi-cdn.globalmouth.com/lib/dist/css/widgets.css"/>
+   <link rel="stylesheet" type="text/css" rv-href="widgetCss"/>
+
+   <script src="https://platform.twitter.com/widgets.js"></script>
 
    <!-- build:css -->
    <!-- This section will be replaced in the gulp build process -->
-   <link rel="stylesheet" type="text/css" href="css/app.css"/>
+   <link rel="stylesheet" type="text/css" href="transpiled/css/app.css"/>
    <!-- endbuild -->
 
-   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-   <script src="https://platform.twitter.com/widgets.js"></script>
-
-   <!-- build:js -->
-   <!-- This section will be replaced in the gulp build process -->
-   <script src="js/app.js"></script>
-   <script src="js/controllers/appController.js"></script>
-   <!-- endbuild -->
-
-   <!-- build:corelib -->
-   <!-- This section will be replaced in the gulp build process -->
-   <script src="../node_modules/kambi-sportsbook-widget-library/src/js/controllers/widgetCoreController.js"></script>
-   <script src="../node_modules/kambi-sportsbook-widget-library/src/js/services/kambiWidgetService.js"></script>
-   <script src="../node_modules/kambi-sportsbook-widget-library/src/js/services/kambiAPIService.js"></script>
-   <script src="../node_modules/kambi-sportsbook-widget-library/src/js/services/coreUtilsService.js"></script>
+   <!-- build:third-party-libs -->
+   <script src="https://s3-eu-west-1.amazonaws.com/kambi-widgets/widget-third-party/v1.2.0/thirdparty.js"></script>
    <!-- endbuild -->
 
    <!-- build:kambi-widget-api -->
    <!-- This section will be replaced in the gulp build process -->
-   <script src="https://c3-static.kambi.com/sb-mobileclient/widget-api/1.0.0.8/kambi-widget-api.js"></script>
+   <script src="https://c3-static.kambi.com/sb-mobileclient/widget-api/1.0.0.10/kambi-widget-api.js"></script>
    <!-- endbuild -->
 </head>
 <body class="kw-body">
-<div class="KambiWidget-card-background-color KambiWidget-card-text-color l-flexbox l-vertical l-expander" ng-controller="appController">
+<div class="KambiWidget-card-background-color KambiWidget-card-text-color l-flexbox l-vertical l-expander">
    <!--Header-->
    <header class="kw-header KambiWidget-header l-pl-16 l-flexbox l-horizontal">
       <div class="l-flexbox l-pack-center l-align-center l-pr-6">
@@ -65,7 +52,7 @@
          wNSwyNy45MTMsNi4zNTUsMjksMTAuMDYyLDI5YzEyLjA3MiwwLDE4LjY3NS0xMC4wMDEsMTguNjc1LTE4LjY3NWMwLTAuMjg0LTAuMDA4LTAuNTY4LTAuMDItMC44NSAgQzMwLDguNTUsMzEuM
          TEyLDcuMzk1LDMxLjk5Myw2LjA3N3oiIGZpbGw9IiM1NUFDRUUiLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48L3N2Zz4=" alt=""></a>
       </div>
-      <div class="l-flexbox l-align-center">{{widgetTitle}}</div>
+      <div class="l-flexbox l-align-center">{widgetTitle}</div>
       <div class="l-flexed"></div>
    </header>
 
@@ -75,5 +62,17 @@
    </main>
 
 </div>
+
+<!-- build:js -->
+<!-- This section will be replaced in the gulp build process -->
+<script src="/node_modules/widget-core-library/src/transpiled/js/coreLibrary.js"></script>
+<script src="/node_modules/widget-core-library/src/transpiled/js/Module/widgetModule.js"></script>
+<script src="/node_modules/widget-core-library/src/transpiled/js/Module/offeringModule.js"></script>
+<script src="/node_modules/widget-core-library/src/transpiled/js/Module/statisticsModule.js"></script>
+<script src="/node_modules/widget-core-library/src/transpiled/js/Module/translationModule.js"></script>
+<script src="/node_modules/widget-core-library/src/transpiled/js/Component/Component.js"></script>
+<script src="/node_modules/widget-core-library/src/transpiled/js/Component/PaginationComponent/PaginationComponent.js"></script>
+<script src="transpiled/js/app.js"></script>
+<!-- endbuild -->
 </body>
 </html>
