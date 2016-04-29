@@ -928,12 +928,14 @@ CoreLibrary.widgetModule = function () {
       init: function init() {
          var _this = this;
 
+         var widgetHeight = 450;
+         CoreLibrary.widgetModule.setWidgetHeight(widgetHeight);
          this.scope.widgetTitle = '';
          setTimeout(function () {
             if (window.twttr && _this.scope.args.twitter && _this.scope.args.twitter.type) {
                var twitterParams = {
                   width: '100%',
-                  height: 500, // TODO $scope.currentHeight - 34,
+                  height: widgetHeight - 37,
                   chrome: 'noheader noborders transparent'
                },
                    locale = CoreLibrary.config.clientConfig.locale.substring(0, 2);
