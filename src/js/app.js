@@ -3,11 +3,9 @@
 
    var TwitterWidget = CoreLibrary.Component.subclass({
       defaultArgs: {
-         twitter: {
-            value: '#kambi',
-            widget_id: '677852574847008768',
-            type: 'related'
-         }
+         value: '#kambi',
+         widget_id: '677852574847008768',
+         type: 'related'
       },
 
       supportedTwitterLocales: ['hi', 'zh-cn', 'fr', 'zh-tw',
@@ -23,20 +21,20 @@
          CoreLibrary.widgetModule.setWidgetHeight(widgetHeight);
          this.scope.widgetTitle = '';
          setTimeout(() => {
-            if (window.twttr && this.scope.args.twitter && this.scope.args.twitter.type) {
+            if (window.twttr && this.scope.args.type) {
                var twitterParams = {
                   width: '100%',
                   height: widgetHeight - 37,
                   chrome: 'noheader noborders transparent'
                },
-               locale = CoreLibrary.config.clientConfig.locale.substring(0, 2);
+               locale = CoreLibrary.config.locale.substring(0, 2);
 
-               Object.keys(this.scope.args.twitter).forEach((key) => {
-                  twitterParams[key] = this.scope.args.twitter[key];
+               Object.keys(this.scope.args).forEach((key) => {
+                  twitterParams[key] = this.scope.args[key];
                });
 
-               twitterParams[this.scope.args.twitter.type] =
-                  this.scope.args.twitter.value ? encodeURIComponent(this.scope.args.twitter.value) : '';
+               twitterParams[this.scope.args.type] =
+                  this.scope.args.value ? encodeURIComponent(this.scope.args.value) : '';
 
                // Match the locale string against supported languages provided by twitter
                if (locale && this.supportedTwitterLocales.indexOf(locale) !== -1) {
@@ -45,10 +43,10 @@
                   twitterParams.lang = 'en';
                }
 
-               if (this.scope.args.twitter.type.match('screen')) {
-                  this.scope.widgetTitle = '@' + this.scope.args.twitter.value;
+               if (this.scope.args.type.match('screen')) {
+                  this.scope.widgetTitle = '@' + this.scope.args.value;
                } else {
-                  this.scope.widgetTitle = this.scope.args.twitter.value;
+                  this.scope.widgetTitle = this.scope.args.value;
                }
 
                window.twttr.widgets.createTimeline(
