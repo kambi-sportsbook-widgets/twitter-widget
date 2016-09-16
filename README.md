@@ -1,6 +1,6 @@
 # twitter-widget
 
-![](https://github.com/kambi-sportsbook-widgets/twitter-widget/blob/master/screenshot.png?raw=true)
+![](https://github.com/kambi-sportsbook-widgets/twitter-widget/blob/master/screenshot.jpg?raw=true)
 
 A widget that shows an embedded twitter feed.
 
